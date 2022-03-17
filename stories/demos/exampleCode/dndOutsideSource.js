@@ -8,6 +8,7 @@ import DemoLink from '../../DemoLink.component'
 import withDragAndDrop from '../../../src/addons/dragAndDrop'
 // Storybook cannot alias this, so you would use 'react-big-calendar/lib/addons/dragAndDrop/styles.scss'
 import '../../../src/addons/dragAndDrop/styles.scss'
+import MyToolbar from "./custom/MyToolbar";
 
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
@@ -25,11 +26,17 @@ const adjEvents = events.map((it, ind) => ({
 
 const formatName = (name, count) => `${name} ID ${count}`
 
+const ResourceHeaderCustom = ({ label }) => {
+    return <React.Fragment>{label}!</React.Fragment>
+}
+
 export default function DnDOutsideResource({ localizer }) {
   const [myEvents, setMyEvents] = useState(adjEvents)
   const [draggedEvent, setDraggedEvent] = useState()
   const [displayDragItemInCell, setDisplayDragItemInCell] = useState(true)
   const [counters, setCounters] = useState({ item1: 0, item2: 0 })
+
+    const [date, setDate] = useState(new Date(2015, 3, 12))
 
   const eventPropGetter = useCallback(
     (event) => ({
@@ -130,13 +137,27 @@ export default function DnDOutsideResource({ localizer }) {
     [setMyEvents]
   )
 
-  const defaultDate = useMemo(() => new Date(2015, 3, 12), [])
+    const components = useMemo(
+        () => {
+        return {
+            resourceHeader: ResourceHeaderCustom,
+            toolbar: MyToolbar,
+        }
+    }, []
+    )
+
+    const onNavigate = useCallback(
+        date => setDate(date),
+        []
+    )
 
   return (
     <Fragment>
       <DemoLink fileName="dndOutsideSource">
         <Card className="dndOutsideSourceExample">
           <div className="inner">
+              <button onClick={() => setDate(new Date(2015, 3, 12))}>initial date!</button>
+
             <h4>Outside Drag Sources</h4>
             <p>
               Lighter colored events, in the Calendar, have an `isDraggable` key
@@ -175,12 +196,13 @@ export default function DnDOutsideResource({ localizer }) {
       </DemoLink>
       <div className="height600">
         <DragAndDropCalendar
-          defaultDate={defaultDate}
+          date={date}
           defaultView={Views.MONTH}
           dragFromOutsideItem={
             displayDragItemInCell ? dragFromOutsideItem : null
           }
           draggableAccessor="isDraggable"
+          components={components}
           eventPropGetter={eventPropGetter}
           events={myEvents}
           localizer={localizer}
@@ -189,6 +211,7 @@ export default function DnDOutsideResource({ localizer }) {
           onEventDrop={moveEvent}
           onEventResize={resizeEvent}
           onSelectSlot={newEvent}
+          onNavigate={onNavigate}
           resizable
           selectable
           allDayHidden

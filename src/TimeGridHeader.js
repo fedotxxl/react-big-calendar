@@ -120,7 +120,7 @@ class TimeGridHeader extends React.Component {
         )
     }
 
-    renderHeaderByDay() {
+    renderHeaderByDay(ResourceHeaderComponent) {
         let {resources, range, getNow, accessors} = this.props
         const today = getNow()
 
@@ -133,7 +133,11 @@ class TimeGridHeader extends React.Component {
                 <div className="rbc-row rbc-row-resource">
                     {resources.map(([id, resource], idx) => (
                         <div key={`resource_${id || idx}`} className="rbc-header">
-                            {accessors.resourceTitle(resource)}
+                            <ResourceHeaderComponent
+                                index={idx}
+                                label={accessors.resourceTitle(resource)}
+                                resource={resource}
+                            />
                         </div>
                     ))}
                 </div>
@@ -143,14 +147,18 @@ class TimeGridHeader extends React.Component {
         ))
     }
 
-    renderHeaderByResource(groupedEvents, allDayHidden) {
+    renderHeaderByResource(groupedEvents, allDayHidden, ResourceHeaderComponent) {
         let {resources, range, accessors} = this.props
         return resources.map(([id, resource], idx) => (
             <div className="rbc-time-header-content" key={id || idx}>
                 {resource && (
-                    <div className="rbc-row rbc-row-resource">
-                        <div key={`resource_${idx}`} className="rbc-header">
-                            {accessors.resourceTitle(resource)}
+                    <div className="rbc-row rbc-row-resource" key={`resource_${idx}`}>
+                        <div className="rbc-header">
+                            <ResourceHeaderComponent
+                                index={idx}
+                                label={accessors.resourceTitle(resource)}
+                                resource={resource}
+                            />
                         </div>
                     </div>
                 )}
@@ -208,12 +216,12 @@ class TimeGridHeader extends React.Component {
 
                 {
                     (!resourceWeekViewHeader || resourceWeekViewHeader === 'resource') &&
-                    this.renderHeaderByResource(groupedEvents, allDayHidden)
+                    this.renderHeaderByResource(groupedEvents, allDayHidden, ResourceHeaderComponent)
                 }
 
                 {
                     (resourceWeekViewHeader === 'day') &&
-                    this.renderHeaderByDay(groupedEvents)
+                    this.renderHeaderByDay(ResourceHeaderComponent)
                 }
             </div>
         )
