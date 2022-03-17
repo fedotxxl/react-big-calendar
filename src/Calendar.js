@@ -267,6 +267,11 @@ class Calendar extends React.Component {
     resourceWeekViewHeader: PropTypes.oneOf(['day', 'resource']),
 
     /**
+     * Hides all day panel
+     */
+    allDayHidden: PropTypes.bool,
+
+    /**
      * Determines the current date/time which is highlighted in the views.
      *
      * The value affects which day is shaded and which time is shown as

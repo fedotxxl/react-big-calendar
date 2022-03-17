@@ -120,18 +120,18 @@ export default class TimeGrid extends Component {
                        }) {
     let { min, max, components, accessors, localizer } = this.props
     let daysEvents = (groupedEvents.get(id) || []).filter(event =>
-        dates.inRange(date, accessors.start(event), accessors.end(event), 'day')
+        localizer.inRange(date, accessors.start(event), accessors.end(event), 'day')
     )
 
     return (
         <DayColumn
             {...this.props}
             localizer={localizer}
-            min={dates.merge(date, min)}
-            max={dates.merge(date, max)}
+            min={localizer.merge(date, min)}
+            max={localizer.merge(date, max)}
             resource={resource && id}
             components={components}
-            isNow={dates.eq(date, now, 'day')}
+            isNow={localizer.isSameDate(date, now)}
             key={index1 + '-' + index2}
             date={date}
             events={daysEvents}
@@ -292,6 +292,7 @@ export default class TimeGrid extends Component {
           onDrillDown={this.props.onDrillDown}
           getDrilldownView={this.props.getDrilldownView}
           resourceWeekViewHeader={this.props.resourceWeekViewHeader}
+          allDayHidden={this.props.allDayHidden}
           resizable={resizable}
         />
         <div
@@ -420,6 +421,7 @@ TimeGrid.propTypes = {
   onDrillDown: PropTypes.func,
   getDrilldownView: PropTypes.func.isRequired,
   resourceWeekViewHeader: PropTypes.oneOf(['day', 'resource']),
+  allDayHidden: PropTypes.bool,
 
   dayLayoutAlgorithm: DayLayoutAlgorithmPropType,
 }

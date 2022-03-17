@@ -11,6 +11,13 @@ import '../../../src/addons/dragAndDrop/styles.scss'
 
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
+const resourceMap = [
+    { resourceId: 1, resourceTitle: 'Board room' },
+    { resourceId: 2, resourceTitle: 'Training room' },
+    { resourceId: 3, resourceTitle: 'Meeting room 1' },
+    { resourceId: 4, resourceTitle: 'Meeting room 2' },
+]
+
 const adjEvents = events.map((it, ind) => ({
   ...it,
   isDraggable: ind % 2 === 0,
@@ -183,6 +190,13 @@ export default function DnDOutsideResource({ localizer }) {
           onSelectSlot={newEvent}
           resizable
           selectable
+          allDayHidden
+
+          resourceIdAccessor="resourceId"
+          resources={resourceMap}
+          resourceTitleAccessor="resourceTitle"
+          resourceWeekViewHeader="resource"
+
         />
       </div>
     </Fragment>

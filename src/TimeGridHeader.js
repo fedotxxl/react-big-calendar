@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 import scrollbarSize from 'dom-helpers/scrollbarSize'
 import React from 'react'
-
-import dates from './utils/dates'
 import DateContentRow from './DateContentRow'
 import Header from './Header'
 import ResourceHeader from './ResourceHeader'
@@ -43,7 +41,7 @@ class TimeGridHeader extends React.Component {
         notify(this.props.onDrillDown, [date, view])
     }
 
-    renderHeaderCell({ date, index, today }) {
+    renderHeaderCell({date, index, today}) {
         let {
             localizer,
             getDrilldownView,
@@ -131,6 +129,7 @@ class TimeGridHeader extends React.Component {
                 <div className="rbc-row rbc-time-header-cell">
                     {this.renderHeaderCell({date, index, today})}
                 </div>
+
                 <div className="rbc-row rbc-row-resource">
                     {resources.map(([id, resource], idx) => (
                         <div key={`resource_${id || idx}`} className="rbc-header">
@@ -138,12 +137,13 @@ class TimeGridHeader extends React.Component {
                         </div>
                     ))}
                 </div>
+
                 {/* TODO - render date content row */}
             </div>
         ))
     }
 
-    renderHeaderByResource(groupedEvents) {
+    renderHeaderByResource(groupedEvents, allDayHidden) {
         let {resources, range, accessors} = this.props
         return resources.map(([id, resource], idx) => (
             <div className="rbc-time-header-content" key={id || idx}>
@@ -160,7 +160,10 @@ class TimeGridHeader extends React.Component {
                         {this.renderHeaderCellsByRange(range)}
                     </div>
                 )}
-                {this.renderDateContentRow({groupedEvents, resource, range})}
+                {
+                    (!allDayHidden) &&
+                    this.renderDateContentRow({groupedEvents, resource, range})
+                }
             </div>
         ))
     }
@@ -179,6 +182,7 @@ class TimeGridHeader extends React.Component {
                 resourceHeader: ResourceHeaderComponent = ResourceHeader,
             },
             resizable,
+            allDayHidden
         } = this.props
 
         let style = {}
@@ -201,10 +205,16 @@ class TimeGridHeader extends React.Component {
                     {TimeGutterHeader && <TimeGutterHeader/>}
                 </div>
 
-                {resourceWeekViewHeader === 'resource' &&
-                this.renderHeaderByResource(groupedEvents)}
-                {resourceWeekViewHeader === 'day' &&
-                this.renderHeaderByDay(groupedEvents)}
+
+                {
+                    (!resourceWeekViewHeader || resourceWeekViewHeader === 'resource') &&
+                    this.renderHeaderByResource(groupedEvents, allDayHidden)
+                }
+
+                {
+                    (resourceWeekViewHeader === 'day') &&
+                    this.renderHeaderByDay(groupedEvents)
+                }
             </div>
         )
     }
@@ -237,6 +247,7 @@ TimeGridHeader.propTypes = {
     onDrillDown: PropTypes.func,
     getDrilldownView: PropTypes.func.isRequired,
     scrollRef: PropTypes.any,
+    allDayHidden: PropTypes.bool
 }
 
 export default TimeGridHeader
