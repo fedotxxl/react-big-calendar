@@ -138,6 +138,7 @@ export default function DnDResource({ localizer }) {
           resourceIdAccessor="resourceId"
           resources={resourceMap}
           resourceTitleAccessor="resourceTitle"
+          resourceWeekViewHeader="day"
           scrollToTime={scrollToTime}
           selectable
           showMultiDayTimes={true}

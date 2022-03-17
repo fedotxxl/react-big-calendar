@@ -12,10 +12,10 @@ import '../../../src/addons/dragAndDrop/styles.scss'
 const DragAndDropCalendar = withDragAndDrop(Calendar)
 
 const resourceMap = [
-    { resourceId: 1, resourceTitle: 'Board room' },
-    { resourceId: 2, resourceTitle: 'Training room' },
-    { resourceId: 3, resourceTitle: 'Meeting room 1' },
-    { resourceId: 4, resourceTitle: 'Meeting room 2' },
+  { resourceId: 1, resourceTitle: 'Board room' },
+  { resourceId: 2, resourceTitle: 'Training room' },
+  { resourceId: 3, resourceTitle: 'Meeting room 1' },
+  { resourceId: 4, resourceTitle: 'Meeting room 2' },
 ]
 
 const adjEvents = events.map((it, ind) => ({
@@ -92,7 +92,7 @@ export default function DnDOutsideResource({ localizer }) {
   )
 
   const onDropFromOutside = useCallback(
-    ({ start, end, allDay: isAllDay }) => {
+    ({ start, end, resource, allDay: isAllDay }) => {
       if (draggedEvent === 'undroppable') {
         setDraggedEvent(null)
         return
@@ -101,6 +101,7 @@ export default function DnDOutsideResource({ localizer }) {
       const { name } = draggedEvent
       const event = {
         title: formatName(name, counters[name]),
+        resourceId: resource,
         start,
         end,
         isAllDay,
@@ -191,12 +192,10 @@ export default function DnDOutsideResource({ localizer }) {
           resizable
           selectable
           allDayHidden
-
           resourceIdAccessor="resourceId"
           resources={resourceMap}
           resourceTitleAccessor="resourceTitle"
-          resourceWeekViewHeader="resource"
-
+          resourceWeekViewHeader="day"
         />
       </div>
     </Fragment>
