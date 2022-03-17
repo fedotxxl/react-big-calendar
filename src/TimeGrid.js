@@ -109,13 +109,59 @@ export default class TimeGrid extends Component {
     })
   }
 
+  renderEventDayColumn({
+                         id,
+                         resource,
+                         date,
+                         index1,
+                         index2,
+                         groupedEvents,
+                         now,
+                       }) {
+    let { min, max, components, accessors, localizer } = this.props
+    let daysEvents = (groupedEvents.get(id) || []).filter(event =>
+        dates.inRange(date, accessors.start(event), accessors.end(event), 'day')
+    )
+
+    return (
+        <DayColumn
+            {...this.props}
+            localizer={localizer}
+            min={dates.merge(date, min)}
+            max={dates.merge(date, max)}
+            resource={resource && id}
+            components={components}
+            isNow={dates.eq(date, now, 'day')}
+            key={index1 + '-' + index2}
+            date={date}
+            events={daysEvents}
+        />
+    )
+  }
+
   renderEvents(range, events, backgroundEvents, now) {
-    let { min, max, components, accessors, localizer, dayLayoutAlgorithm } =
+    let { min, max, components, accessors, localizer, dayLayoutAlgorithm, resourceWeekViewHeader } =
       this.props
 
     const resources = this.memoizedResources(this.props.resources, accessors)
     const groupedEvents = resources.groupEvents(events)
     const groupedBackgroundEvents = resources.groupEvents(backgroundEvents)
+
+    if (resourceWeekViewHeader === 'resource') {
+      return resources.map(([id, resource], index1) =>
+          range.map((date, index2) => {
+            return this.renderEventDayColumn({
+              id,
+              resource,
+              date,
+              index1,
+              index2,
+              groupedEvents,
+              now,
+            })
+          })
+      )
+    }
 
     return resources.map(([id, resource], i) =>
       range.map((date, jj) => {
@@ -245,6 +291,7 @@ export default class TimeGrid extends Component {
           onKeyPressEvent={this.props.onKeyPressEvent}
           onDrillDown={this.props.onDrillDown}
           getDrilldownView={this.props.getDrilldownView}
+          resourceWeekViewHeader={this.props.resourceWeekViewHeader}
           resizable={resizable}
         />
         <div
@@ -372,6 +419,7 @@ TimeGrid.propTypes = {
   onKeyPressEvent: PropTypes.func,
   onDrillDown: PropTypes.func,
   getDrilldownView: PropTypes.func.isRequired,
+  resourceWeekViewHeader: PropTypes.oneOf(['day', 'resource']),
 
   dayLayoutAlgorithm: DayLayoutAlgorithmPropType,
 }

@@ -46,7 +46,7 @@ export default function Resource({ localizer }) {
   const { defaultDate, views } = useMemo(
     () => ({
       defaultDate: new Date(2018, 0, 29),
-      views: ['day', 'work_week'],
+      views: ['day', 'week'],
     }),
     []
   )
@@ -55,6 +55,7 @@ export default function Resource({ localizer }) {
     <Fragment>
       <DemoLink fileName="resource" />
       <div className="height600">
+        <div>qwe!</div>
         <Calendar
           defaultDate={defaultDate}
           defaultView={Views.DAY}
@@ -63,6 +64,7 @@ export default function Resource({ localizer }) {
           resourceIdAccessor="resourceId"
           resources={resourceMap}
           resourceTitleAccessor="resourceTitle"
+          resourceWeekViewHeader="day"
           step={60}
           views={views}
         />
