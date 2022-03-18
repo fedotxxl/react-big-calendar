@@ -219,6 +219,7 @@ export default function DnDOutsideResource({ localizer }) {
           resources={resourceMap}
           resourceTitleAccessor="resourceTitle"
           resourceWeekViewHeader="day"
+          dayLayoutAlgorithm="no-overlap"
         />
       </div>
     </Fragment>
