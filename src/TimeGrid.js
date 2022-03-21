@@ -162,46 +162,18 @@ export default class TimeGrid extends Component {
           })
       )
     }
-
-    return resources.map(([id, resource], i) =>
-      range.map((date, jj) => {
-        let daysEvents = (groupedEvents.get(id) || []).filter((event) =>
-          localizer.inRange(
-            date,
-            accessors.start(event),
-            accessors.end(event),
-            'day'
-          )
+    return range.map((date, index2) =>
+        resources.map(([id, resource], index1) =>
+            this.renderEventDayColumn({
+              id,
+              resource,
+              date,
+              index1,
+              index2,
+              groupedEvents,
+              now,
+            })
         )
-
-        let daysBackgroundEvents = (
-          groupedBackgroundEvents.get(id) || []
-        ).filter((event) =>
-          localizer.inRange(
-            date,
-            accessors.start(event),
-            accessors.end(event),
-            'day'
-          )
-        )
-
-        return (
-          <DayColumn
-            {...this.props}
-            localizer={localizer}
-            min={localizer.merge(date, min)}
-            max={localizer.merge(date, max)}
-            resource={resource && id}
-            components={components}
-            isNow={localizer.isSameDate(date, now)}
-            key={i + '-' + jj}
-            date={date}
-            events={daysEvents}
-            backgroundEvents={daysBackgroundEvents}
-            dayLayoutAlgorithm={dayLayoutAlgorithm}
-          />
-        )
-      })
     )
   }
 

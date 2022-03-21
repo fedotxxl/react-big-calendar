@@ -178,7 +178,7 @@ export default [
   },
   {
     id: 20,
-    title: 'An overlapped Event',
+    title: '2An overlapped Event',
     start: new Date(2015, 3, 14, 17, 0, 0),
     end: new Date(2015, 3, 14, 18, 30, 0),
     resourceId: 1,
@@ -203,5 +203,12 @@ export default [
     start: new Date(2015, 3, 14, 18, 30, 0),
     end: new Date(2015, 3, 14, 20, 0, 0),
     resourceId: 1,
+  },
+  {
+    id: 24,
+    title: '!An overlapped Event',
+    start: new Date(2015, 3, 14, 17, 0, 0),
+    end: new Date(2015, 3, 14, 18, 30, 0),
+    resourceId: 2,
   },
 ]
