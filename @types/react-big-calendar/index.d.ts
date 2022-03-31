@@ -181,6 +181,7 @@ declare module '@fedotxxl/react-big-calendar' {
 
     export interface Components<TEvent extends object = Event, TResource extends object = object> {
         event?: React.ComponentType<EventProps<TEvent>> | undefined;
+        eventLabel?: React.ComponentType<EventLabelProps<TEvent>> | undefined;
         eventWrapper?: React.ComponentType<EventWrapperProps<TEvent>> | undefined;
         eventContainerWrapper?: React.ComponentType | undefined;
         dateCellWrapper?: React.ComponentType | undefined;
@@ -238,6 +239,11 @@ declare module '@fedotxxl/react-big-calendar' {
         localizer: DateLocalizer;
         slotStart: Date;
         slotEnd: Date;
+    }
+
+    export interface EventLabelProps<TEvent extends object = Event> {
+        event: TEvent;
+        label: string;
     }
 
     export interface EventWrapperProps<TEvent extends object = Event> {

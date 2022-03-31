@@ -22,7 +22,7 @@ function TimeGridEvent(props) {
     onDoubleClick,
     isBackgroundEvent,
     onKeyPress,
-    components: { event: Event, eventWrapper: EventWrapper },
+    components: { event: Event, eventLabel: EventLabel, eventWrapper: EventWrapper },
   } = props
   let title = accessors.title(event)
   let tooltip = accessors.tooltip(event)
@@ -34,7 +34,7 @@ function TimeGridEvent(props) {
   let { height, top, width, xOffset } = style
   const inner = [
     <div key="1" className="rbc-event-label">
-      {label}
+        {EventLabel ? <EventLabel event={event} label={label} /> : label}
     </div>,
     <div key="2" className="rbc-event-content">
       {Event ? <Event event={event} title={title} /> : title}
