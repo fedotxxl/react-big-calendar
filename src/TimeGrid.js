@@ -68,7 +68,7 @@ export default class TimeGrid extends Component {
       this.measureGutter()
     }
 
-    this.applyScroll()
+    this.applyScroll(true)
     //this.checkOverflow()
   }
 
@@ -316,9 +316,9 @@ export default class TimeGrid extends Component {
     )
   }
 
-  applyScroll() {
+  applyScroll(isUpdate) {
     // If auto-scroll is disabled, we don't actually apply the scroll
-    if (this._scrollRatio != null && this.props.enableAutoScroll === true) {
+    if (this._scrollRatio != null && this.props.enableAutoScroll === true && !isUpdate) {
       const content = this.contentRef.current
       content.scrollTop = content.scrollHeight * this._scrollRatio
       // Only do this once

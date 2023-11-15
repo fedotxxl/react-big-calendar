@@ -24,26 +24,26 @@
     }
   },
   "react-big-calendar.js": {
-    "bundled": 1543517,
-    "minified": 439270,
-    "gzipped": 134927
+    "bundled": 1543542,
+    "minified": 439277,
+    "gzipped": 134932
   },
   "react-big-calendar.min.js": {
-    "bundled": 283152,
-    "minified": 281762,
-    "gzipped": 87508
+    "bundled": 283159,
+    "minified": 281769,
+    "gzipped": 87513
   },
   "react-big-calendar.esm.js": {
-    "bundled": 201630,
-    "minified": 94046,
-    "gzipped": 24388,
+    "bundled": 201749,
+    "minified": 94136,
+    "gzipped": 24439,
     "treeshaked": {
       "rollup": {
-        "code": 67235,
+        "code": 67262,
         "import_statements": 1777
       },
       "webpack": {
-        "code": 71031
+        "code": 71058
       }
     }
   }
