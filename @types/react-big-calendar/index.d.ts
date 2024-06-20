@@ -295,6 +295,7 @@ declare module '@fedotxxl/react-big-calendar' {
         end: stringOrDate;
         slots: Date[] | string[];
         action: 'select' | 'click' | 'doubleClick';
+        resourceId?: any;
     }
 
     export type Culture = string;

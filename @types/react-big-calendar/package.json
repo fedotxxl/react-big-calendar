@@ -1,103 +1,103 @@
 {
-    "name": "@fedotxxl/react-big-calendar-types",
-    "version": "0.39.5-beta.3",
-    "description": "TypeScript definitions for react-big-calendar",
-    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-big-calendar",
-    "license": "MIT",
-    "contributors": [
-        {
-            "name": "Piotr Witek",
-            "url": "https://github.com/piotrwitek",
-            "githubUsername": "piotrwitek"
-        },
-        {
-            "name": "Austin Turner",
-            "url": "https://github.com/paustint",
-            "githubUsername": "paustint"
-        },
-        {
-            "name": "Krzysztof Bezrąk",
-            "url": "https://github.com/pikpok",
-            "githubUsername": "pikpok"
-        },
-        {
-            "name": "Sebastian Silbermann",
-            "url": "https://github.com/eps1lon",
-            "githubUsername": "eps1lon"
-        },
-        {
-            "name": "Paul Potsides",
-            "url": "https://github.com/strongpauly",
-            "githubUsername": "strongpauly"
-        },
-        {
-            "name": "janb87",
-            "url": "https://github.com/janb87",
-            "githubUsername": "janb87"
-        },
-        {
-            "name": "Panagiotis Rikarnto Siavelis",
-            "url": "https://github.com/siavelis",
-            "githubUsername": "siavelis"
-        },
-        {
-            "name": "Lucas Silva Souza",
-            "url": "https://github.com/lksilva",
-            "githubUsername": "lksilva"
-        },
-        {
-            "name": "Siarhey Belofost",
-            "url": "https://github.com/SergeyBelofost",
-            "githubUsername": "SergeyBelofost"
-        },
-        {
-            "name": "Mark Nelissen",
-            "url": "https://github.com/marknelissen",
-            "githubUsername": "marknelissen"
-        },
-        {
-            "name": "Eric Kenney",
-            "url": "https://github.com/KenneyE",
-            "githubUsername": "KenneyE"
-        },
-        {
-            "name": "Paito Anderson",
-            "url": "https://github.com/PaitoAnderson",
-            "githubUsername": "PaitoAnderson"
-        },
-        {
-            "name": "Jan Michalak",
-            "url": "https://github.com/michalak111",
-            "githubUsername": "michalak111"
-        },
-        {
-            "name": "Tom Price",
-            "url": "https://github.com/tomtom5152",
-            "githubUsername": "tomtom5152"
-        },
-        {
-            "name": "Daniele Carrucciu",
-            "url": "https://github.com/catruzz",
-            "githubUsername": "catruzz"
-        },
-        {
-            "name": "Chris Frewin",
-            "url": "https://github.com/princefishthrower",
-            "githubUsername": "princefishthrower"
-        }
-    ],
-    "main": "",
-    "types": "index.d.ts",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
-        "directory": "types/react-big-calendar"
+  "name": "@fedotxxl/react-big-calendar-types",
+  "version": "0.39.5-beta.4",
+  "description": "TypeScript definitions for react-big-calendar",
+  "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-big-calendar",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Piotr Witek",
+      "url": "https://github.com/piotrwitek",
+      "githubUsername": "piotrwitek"
     },
-    "scripts": {},
-    "dependencies": {
-        "@types/prop-types": "*",
-        "@types/react": "*"
+    {
+      "name": "Austin Turner",
+      "url": "https://github.com/paustint",
+      "githubUsername": "paustint"
     },
-    "typesPublisherContentHash": "2005a68608550b9d60d10590753b136c04ebfa8e818e3a9f5bb065e1df1538d9",
-    "typeScriptVersion": "3.9"
+    {
+      "name": "Krzysztof Bezrąk",
+      "url": "https://github.com/pikpok",
+      "githubUsername": "pikpok"
+    },
+    {
+      "name": "Sebastian Silbermann",
+      "url": "https://github.com/eps1lon",
+      "githubUsername": "eps1lon"
+    },
+    {
+      "name": "Paul Potsides",
+      "url": "https://github.com/strongpauly",
+      "githubUsername": "strongpauly"
+    },
+    {
+      "name": "janb87",
+      "url": "https://github.com/janb87",
+      "githubUsername": "janb87"
+    },
+    {
+      "name": "Panagiotis Rikarnto Siavelis",
+      "url": "https://github.com/siavelis",
+      "githubUsername": "siavelis"
+    },
+    {
+      "name": "Lucas Silva Souza",
+      "url": "https://github.com/lksilva",
+      "githubUsername": "lksilva"
+    },
+    {
+      "name": "Siarhey Belofost",
+      "url": "https://github.com/SergeyBelofost",
+      "githubUsername": "SergeyBelofost"
+    },
+    {
+      "name": "Mark Nelissen",
+      "url": "https://github.com/marknelissen",
+      "githubUsername": "marknelissen"
+    },
+    {
+      "name": "Eric Kenney",
+      "url": "https://github.com/KenneyE",
+      "githubUsername": "KenneyE"
+    },
+    {
+      "name": "Paito Anderson",
+      "url": "https://github.com/PaitoAnderson",
+      "githubUsername": "PaitoAnderson"
+    },
+    {
+      "name": "Jan Michalak",
+      "url": "https://github.com/michalak111",
+      "githubUsername": "michalak111"
+    },
+    {
+      "name": "Tom Price",
+      "url": "https://github.com/tomtom5152",
+      "githubUsername": "tomtom5152"
+    },
+    {
+      "name": "Daniele Carrucciu",
+      "url": "https://github.com/catruzz",
+      "githubUsername": "catruzz"
+    },
+    {
+      "name": "Chris Frewin",
+      "url": "https://github.com/princefishthrower",
+      "githubUsername": "princefishthrower"
+    }
+  ],
+  "main": "",
+  "types": "index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+    "directory": "types/react-big-calendar"
+  },
+  "scripts": {},
+  "dependencies": {
+    "@types/prop-types": "*",
+    "@types/react": "*"
+  },
+  "typesPublisherContentHash": "2005a68608550b9d60d10590753b136c04ebfa8e818e3a9f5bb065e1df1538d9",
+  "typeScriptVersion": "3.9"
 }
